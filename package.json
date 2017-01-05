@@ -2,7 +2,7 @@
   "name": "gp-calendar",
   "private": true,
   "version": "0.0.0",
-  "description": "a Sails application",
+  "description": "GP Calendar",
   "keywords": [],
   "dependencies": {
     "ejs": "2.3.4",
@@ -21,7 +21,8 @@
     "include-all": "~0.1.6",
     "rc": "1.0.1",
     "sails": "~0.12.3",
-    "sails-disk": "~0.10.9"
+    "sails-disk": "~0.10.9",
+    "sails-postgresql": "^0.11.4"
   },
   "scripts": {
     "debug": "node debug app.js",
@@ -30,8 +31,8 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/gp-calendar.git"
+    "url": "git@gitlab.com:krahl/calendario-gp.git"
   },
-  "author": "anonymous node/sails user",
+  "author": "Lucas Krahl",
   "license": ""
 }

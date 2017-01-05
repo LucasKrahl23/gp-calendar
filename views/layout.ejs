@@ -1,94 +1,145 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Material Admin</title>
+        <!-- Viewport mobile tag for sensible mobile support -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Viewport mobile tag for sensible mobile support -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!-- Vendor CSS -->
+        <link href="/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+        <link href="/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+        <link href="/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+        <link href="/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">        
+        <link href="/vendors/bower_components/google-material-color/dist/palette.css" rel="stylesheet">
+        
+        <!-- CSS -->
+        <link href="/styles/app.min.1.css" rel="stylesheet">
+        <link href="/styles/app.min.2.css" rel="stylesheet"> 
+        
+    </head>
+    <body data-ma-header="teal">
+        <header id="header" class="media">
+            <div class="pull-left h-logo">
+                <a href="/" class="hidden-xs">
+                    GP Calendar   
+                    <small>v1.0</small>
+                </a>
+                
+                <div class="menu-collapse" data-ma-action="sidebar-open" data-ma-target="main-menu">
+                    <div class="mc-wrap">
+                        <div class="mcw-line top palette-White bg"></div>
+                        <div class="mcw-line center palette-White bg"></div>
+                        <div class="mcw-line bottom palette-White bg"></div>
+                    </div>
+                </div>
+            </div>
 
+            <ul class="pull-right h-menu">
+                <li class="hm-search-trigger">
+                    <a href="#" data-ma-action="search-open">
+                        <i class="hm-icon zmdi zmdi-search"></i>
+                    </a>
+                </li>
+                
+                <li class="hm-alerts" data-user-alert="sua-messages" data-ma-action="sidebar-open" data-ma-target="user-alerts">
+                    <a href="#"><i class="hm-icon zmdi zmdi-notifications"></i></a>
+                </li>
+                <li class="dropdown hm-profile">
+                    <a data-toggle="dropdown" href="#">
+                        <img src="images/profile-pics/1.jpg" alt="">
+                    </a>
+                    
+                    <ul class="dropdown-menu pull-right dm-icon">
+                        <li>
+                            <a href="#"><i class="zmdi zmdi-settings"></i> Settings</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="zmdi zmdi-time-restore"></i> Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="media-body h-search">
+                <form class="p-relative">
+                    <input type="text" class="hs-input" placeholder="Procurar corridas">
+                    <i class="zmdi zmdi-search hs-reset" data-ma-action="search-clear"></i>
+                </form>
+            </div>
+            
+        </header>
 
-    <!--
-        Stylesheets and Preprocessors
-        ==============================
+        <section id="main">
+        
 
-        You can always bring in CSS files manually with `<link>` tags, or asynchronously
-        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
-        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+            <aside id="s-main-menu" class="sidebar">
+                
 
-        By default, stylesheets from your `assets/styles` folder are included
-        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
-        are supported. In production, your styles will be minified and concatenated into
-        a single file.
+                <ul class="smm-alerts">
+                    <li>
+                        <i class="zmdi zmdi-notifications"></i>
+                    </li>
+                </ul>
 
-        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
-        For example, here are a few things you could do:
+                <ul class="main-menu">
+                    <li class="active">
+                        <a href="index.html"><i class="zmdi zmdi-home"></i> Inicio</a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="#" data-ma-action="submenu-toggle"><i class="zmdi zmdi-view-compact"></i> Cadastros</a>
 
-            + Change the order of your CSS files
-            + Import stylesheets from other directories
-            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
-    -->
+                        <ul>
+                            <li><a href="alternative-header.html">Maps</a></li>
+                            <li><a href="colored-header.html">Tipo</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
 
-    <!--STYLES-->
-    <link rel="stylesheet" href="/styles/importer.css">
-    <!--STYLES END-->
-  </head>
+            <section id="content">
+                <div class="container">
+                    <div class="card">
+                        <%- body %>
+                    </div>
+                </div>
+            </section>
 
-  <body>
-    <%- body %>
+        </section>
 
+        <!-- Page Loader -->
+        <div class="page-loader palette-Teal bg">
+            <div class="preloader pl-xl pls-white">
+                <svg class="pl-circular" viewBox="25 25 50 50">
+                    <circle class="plc-path" cx="50" cy="50" r="20"/>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Javascript Libraries -->
+        <script src="/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="/vendors/bower_components/Waves/dist/waves.min.js"></script>
+        <script src="/vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+        <script src="/vendors/bower_components/moment/min/moment.min.js"></script>
+        <script src="/vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+        <script src="/vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js"></script>
+        <script src="/vendors/bower_components/salvattore/dist/salvattore.min.js"></script>
 
+        <script src="/vendors/bower_components/flot/jquery.flot.js"></script>
+        <script src="/vendors/bower_components/flot/jquery.flot.resize.js"></script>
+        <script src="/vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
+        <script src="/vendors/sparklines/jquery.sparkline.min.js"></script>
+        <script src="/vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+        <script src="/js/flot-charts/curved-line-chart.js"></script>
+        <script src="/js/flot-charts/line-chart.js"></script>
 
-    <!--
-        Client-side Templates
-        ========================
+        <script src="/js/charts.js"></script>
 
-        HTML templates are important prerequisites of modern, rich client applications.
-        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
-        that you load these templates client-side.
+        <script src="/js/functions.js"></script>
+        <script src="/js/actions.js"></script>
 
-        By default, your Gruntfile is configured to automatically load and precompile
-        client-side JST templates in your `assets/templates` folder, then
-        include them here automatically (between TEMPLATES and TEMPLATES END).
-
-        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
-        For example, here are a few things you could do:
-
-            + Import templates from other directories
-            + Use a different template engine (handlebars, jade, dust, etc.)
-            + Internationalize your client-side templates using a server-side
-              stringfile before they're served.
-    -->
-
-    <!--TEMPLATES-->
-    
-    <!--TEMPLATES END-->
-
-
-    <!--
-
-      Client-side Javascript
-      ========================
-
-      You can always bring in JS files manually with `script` tags, or asynchronously
-      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
-      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
-
-      By default, files in your `assets/js` folder are included here
-      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
-      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
-      and concatenated into a single file.
-
-      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
-      For example, here are a few things you could do:
-
-          + Change the order of your scripts
-          + Import scripts from other directories
-          + Use a different preprocessor, like TypeScript
-
-    -->
-
-    <!--SCRIPTS-->
-    <script src="/js/dependencies/sails.io.js"></script>
-    <!--SCRIPTS END-->
-  </body>
+    </body>
 </html>
