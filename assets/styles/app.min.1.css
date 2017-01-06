@@ -11255,7 +11255,7 @@ pre {
 
 .card-header .btn-float {
   right: 25px;
-  bottom: -23px;
+  bottom: 23px;
   z-index: 1;
 }
 
