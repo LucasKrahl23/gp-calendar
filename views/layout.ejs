@@ -17,6 +17,7 @@
         <!-- CSS -->
         <link href="/styles/app.min.1.css" rel="stylesheet">
         <link href="/styles/app.min.2.css" rel="stylesheet"> 
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
         
     </head>
     <body data-ma-header="teal">
@@ -97,7 +98,36 @@
                     </li>
                 </ul>
             </aside>
+            <% if (typeof flash != "undefined"){ %>
+          <% if(flash && flash.err){ %>
+              <% var texto = ""; %>
+              <%var tempo = 10000; %>
+              <% var cor = 'red darken-2'; %>
+              <% Object.keys(flash.err).forEach(function(error){ %>
+                  
+                  <% if (typeof flash.err[error].msg != "undefined") {
+                  
+                      cor = 'blue';
+                      tempo = 0;
+                      texto = flash.err[error].msg;
 
+                      if(flash.err[error].tipomsg === 'erro'){ cor = 'red darken-2'; tempo = 4000 }
+                      if(flash.err[error].tipomsg === 'sucess'){ cor = 'green darken-2'; tempo = 4000}
+                      if(flash.err[error].tipomsg === 'warning'){ cor = 'yellow darken-2'; tempo = 4000}
+                    
+                    } else {
+                      
+                      texto += JSON.stringify(flash.err[error]) + " ";
+
+                    }
+
+                  %>
+              <% }) %>
+              <script type="text/javascript">
+                    notify('<%=texto%>', 'inverse');
+              </script>
+          <% } %>
+        <% } %>
             <section id="content">
                 <div class="container">
                     <div class="card">

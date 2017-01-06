@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Cadastro de Categoria <small>Categorias de corridas</small></h2>
+        <a href="/categoria/new" class="btn palette-Light-Green bg btn-float waves-effect waves-circle waves-float"><i class="zmdi zmdi-plus"></i></a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% _.each(categorias, function(categoria){ %>
+                <tr>
+                    <td><%=categoria.id%></td>
+                    <td><%=categoria.nome%></td>
+                    <td style="width: 5px;">Editar</td>
+                    <td style="width: 5px;">Excluir</td>
+                </tr>
+              <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>
