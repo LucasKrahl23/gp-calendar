@@ -1,55 +1,25 @@
-<script type="text/javascript">
-   $(document).ready(function() {
-    $('select').material_select();
-  });
-</script>
-<div class="s12 m4 l8">
-  <!--  Tables Section-->
-  <div id="tables" class="section scrollspy">
-    <h3 class="header">Cadastro de Engines</h3>
-    <div class="row">
-      <form method="post" action="/engine/update/<%= engine.id %>">
-        
-        <div class="input-field col s12">
-          <input id="nome" name="nome" type="text" value="<%= engine.nome %>">
-          <label for="nome" >Nome</label>
-        </div>
+<div class="card">
+    <div class="card-header">
+        <h2>Cadastro de categoria</h2>
+    </div>
 
-        <div class="input-field col s12">
-          <select data-live-search="true" name="build" required>
-            <option value="-1" disabled>Escolha uma opção</option>
-            <% _.each(builds, function(build){ %>
-              	<% if (engine.build == build.id){ %>
-					<option value="<%=build.id %>" selected="selected"><%=build.nome %></option>
-				<% }else{ %>
-					<option value="<%=build.id %>"><%=build.nome %></option>
-				<%}%>
-            <%})%>
-          </select>
-          <label>Build</label>
-        </div>
-
-        <div class="input-field col s12">
-          <select data-live-search="true" name="servico" required>
-            <option value="-1" disabled>Escolha uma opção</option>
-            <% _.each(servicos, function(servico){ %>
-              	<% if (engine.servico == servico.id){ %>
-					<option value="<%=servico.id %>" selected="selected"><%=servico.nome %></option>
-				<% }else{ %>
-					<option value="<%=servico.id %>"><%=servico.nome %></option>
-				<%}%>
-            <%})%>
-          </select>
-          <label>Serviço</label>
+    <div class="card-body card-padding">
+      <form method="post" action="/categoria/update">
+        <div class="form-group fg-float">
+            <input type="text" hidden name="id" value="<%= categoria.id %>">
+            <div class="fg-line">
+                <input type="text" class="form-control fg-input" name="nome" value="<%= categoria.nome %>">
+                <label class="fg-label">Nome</label>
+            </div>
         </div>
 
         <div class="form-group">
           <div class="col-md-10 col-md-offset-2">
-            <button type="button" onclick="window.location.replace('/engine')" class="waves-effect btn grey darken-1">Cancelar</button>
-            <button type="submit" class="waves-effect btn">Salvar</button>
+          <a class="btn btn-default btn-lg waves-effect" href="/categoria">Cancelar</a>
+          <button class="btn palette-Teal btn-lg bg waves-effect" type="submit">Salvar</button>
           </div>
         </div>
       </form>
+      <br>
     </div>
-  </div>
 </div>

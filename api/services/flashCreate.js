@@ -9,6 +9,9 @@ module.exports = {
 		}]
 	
 		req.session.flash={ err: parametros }
+	},
+	flashPadrao: function(req, id){
+		return "";
 	}
 
 };

@@ -34,10 +34,56 @@ module.exports = {
 		});
 	},
 	edit:function(req, res, next){
-		return res.view();
+		var id = req.param('id');
+		
+		if(!id){
+			flashCreate.createSessionFlash(req, 'Ops, informação id necessárias','warning');
+			return res.redirect('/categoria');
+		}
+
+		Categoria.findOne(id,function categoriaFounded(err, categoria){
+			if(err){
+				req.session.flash={ err: err}
+				console.log(JSON.stringify(err));
+				return res.redirect('/categoria');
+			}
+			if(!categoria){
+				flashCreate.createSessionFlash(req, 'Ops, ocorreu algum problema ao editar a categoria, favor verificar!','erro');
+				return res.redirect('/categoria');
+			}
+
+			return res.view({ categoria: categoria });
+		});
 	},
 	update:function(req, res, next){
-		return res.view();
+		var id = req.param('id');
+		
+		if(!id){
+			flashCreate.createSessionFlash(req, 'Ops, informação id necessárias','warning');
+			return res.redirect('/categoria');
+		}
+
+		var nome = req.param('nome');
+		
+		if(!nome){
+			flashCreate.createSessionFlash(req, 'Ops, informação nome é necessárias','warning');
+			return res.redirect('/categoria/edit/'+id);
+		}
+
+		// Cria o obj
+		var categoriaObj={
+			nome: nome
+		};
+
+		Categoria.update(req.param('id'),categoriaObj, function categoriaUpdated(err, categoria){
+			if(err){
+				req.session.flash={ err: err}
+				console.log(JSON.stringify(err));
+				return res.redirect('/categoria');
+			}
+			flashCreate.createSessionFlash(req, 'Sucesso, dados editados com sucesso.','sucess');
+			return res.redirect('/categoria');
+		});
 	},
 	index: function(req, res, next){
 		Categoria.find().sort('id').exec(function categoriaFounded(err, categorias){
@@ -50,7 +96,21 @@ module.exports = {
 		});
 	},
 	destroy: function (req, res, next){
-		return res.view();
+		var id = req.param('id');
+		
+		if(!id){
+			flashCreate.createSessionFlash(req, 'Ops, informação id necessárias','warning');
+			return res.redirect('/categoria');
+		}
+		
+		Categoria.destroy(id, function categoriaDestroy(err, categoria){
+			if(err){
+				req.session.flash={ err: err}
+				console.log(JSON.stringify(err));
+			}
+			flashCreate.createSessionFlash(req, 'Registro excluído com sucesso!','sucess');
+			return res.redirect('/categoria');
+		});
 	}
 };
 

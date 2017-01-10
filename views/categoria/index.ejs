@@ -26,8 +26,37 @@
                 <tr>
                     <td><%=categoria.id%></td>
                     <td><%=categoria.nome%></td>
-                    <td style="width: 5px;">Editar</td>
-                    <td style="width: 5px;">Excluir</td>
+                    <td width="1px">
+                      <a href="/categoria/edit/<%=categoria.id%>" class="btn palette-Light-Blue btn-icon bg waves-effect waves-circle waves-float">
+                        <i class="zmdi zmdi-edit"></i>
+                      </a>
+                    </td>
+                    <td width="1px">
+                      <button class="btn palette-Deep-Orange btn-icon bg waves-effect waves-circle waves-float" id="sa-<%=categoria.id%>">
+                        <i class="zmdi zmdi-delete"></i>
+                      </button>
+
+                      <script type="text/javascript">
+                      $(document).ready(function() {
+                        //Warning Message
+                          $('#sa-<%=categoria.id%>').click(function(){
+                              swal({
+                                  title: "Atenção!",
+                                  text: "Deseja realmente excluir o registro?",
+                                  type: "warning",
+                                  showCancelButton: true,
+                                  confirmButtonColor: "#DD6B55",
+                                  confirmButtonText: "Sim, excluir!",
+                                  closeOnConfirm: false
+                              }, function(isConfirm){
+                                  if (isConfirm) {
+                                    window.location.replace("/categoria/destroy/<%=categoria.id%>");
+                                  }
+                              });
+                          });
+                        });
+                      </script>
+                    </td>
                 </tr>
               <%})%>
             </tbody>
