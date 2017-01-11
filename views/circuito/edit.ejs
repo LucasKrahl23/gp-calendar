@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Cadastro de categoria</h2>
+    </div>
+
+    <div class="card-body card-padding">
+      <form method="post" action="/categoria/update">
+        <div class="form-group fg-float">
+            <input type="text" hidden name="id" value="<%= categoria.id %>">
+            <div class="fg-line">
+                <input type="text" class="form-control fg-input" name="nome" value="<%= categoria.nome %>">
+                <label class="fg-label">Nome</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-10 col-md-offset-2">
+          <a class="btn btn-default btn-lg waves-effect" href="/categoria">Cancelar</a>
+          <button class="btn palette-Teal btn-lg bg waves-effect" type="submit">Salvar</button>
+          </div>
+        </div>
+      </form>
+      <br>
+    </div>
+</div>

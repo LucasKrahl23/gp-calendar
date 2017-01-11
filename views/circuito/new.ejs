@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Cadastro de circuito</h2>
+    </div>
+
+    <div class="card-body card-padding">
+      <form method="post" action="/circuito/create">
+        
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <input type="text" class="form-control fg-input" name="nome">
+                <label class="fg-label">Nome</label>
+            </div>
+        </div>
+
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <input type="text" class="form-control fg-input" name="pais">
+                <label class="fg-label">Pais</label>
+            </div>
+        </div>
+
+        
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <input type="text" class="form-control fg-input" name="link_localizacao">
+                <label class="fg-label">Localização</label>
+            </div>
+             <span class="input-group-addon last"><i class="zmdi zmdi-my-location"></i></span>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-10 col-md-offset-2">
+          <a class="btn btn-default btn-lg waves-effect" href="/circuito">Cancelar</a>
+          <button class="btn palette-Teal btn-lg bg waves-effect" type="submit">Salvar</button>
+          </div>
+        </div>
+      </form>
+      <br>
+    </div>
+</div>
