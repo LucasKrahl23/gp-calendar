@@ -1,21 +1,36 @@
 <div class="card">
     <div class="card-header">
-        <h2>Cadastro de categoria</h2>
+        <h2>Cadastro de circuito</h2>
     </div>
 
     <div class="card-body card-padding">
-      <form method="post" action="/categoria/update">
+      <form method="post" action="/circuito/update">
+        <input type="text" hidden name="id" value="<%= circuito.id %>">
         <div class="form-group fg-float">
-            <input type="text" hidden name="id" value="<%= categoria.id %>">
             <div class="fg-line">
-                <input type="text" class="form-control fg-input" name="nome" value="<%= categoria.nome %>">
+                <input type="text" class="form-control fg-input" name="nome" value="<%= circuito.nome %>">
                 <label class="fg-label">Nome</label>
+            </div>
+        </div>
+
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <input type="text" class="form-control fg-input" name="pais" value="<%= circuito.pais %>">
+                <label class="fg-label">Pais</label>
+            </div>
+        </div>
+
+        
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <input type="text" class="form-control fg-input" name="link_localizacao" value="<%= circuito.link_localizacao %>">
+                <label class="fg-label">Localização</label>
             </div>
         </div>
 
         <div class="form-group">
           <div class="col-md-10 col-md-offset-2">
-          <a class="btn btn-default btn-lg waves-effect" href="/categoria">Cancelar</a>
+          <a class="btn btn-default btn-lg waves-effect" href="/circuito">Cancelar</a>
           <button class="btn palette-Teal btn-lg bg waves-effect" type="submit">Salvar</button>
           </div>
         </div>

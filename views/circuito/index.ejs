@@ -19,6 +19,7 @@
                     <th>#</th>
                     <th>Nome</th>
                     <th>Pais</th>
+                    <th>Localização</th>
                     <th colspan="2">Ações</th>
                 </tr>
             </thead>
@@ -28,6 +29,7 @@
                     <td><%=circuito.id%></td>
                     <td><%=circuito.nome%></td>
                     <td><span class="flag-icon flag-icon-<%=circuito.pais%>"></span></td>
+                    <td><a href="<%=circuito.link_localizacao%>" target="_blank" class="btn btn-success btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-google-maps"></i></a></td>
                     <td width="1px">
                       <a href="/circuito/edit/<%=circuito.id%>" class="btn palette-Light-Blue btn-icon bg waves-effect waves-circle waves-float">
                         <i class="zmdi zmdi-edit"></i>
