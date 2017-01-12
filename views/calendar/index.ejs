@@ -21,6 +21,7 @@
                     <th>Categoria</th>
                     <th>Circuito</th>
                     <th>Pais</th>
+                    <th>Localização</th>
                     <th>Inicio</th>
                     <th>Fim</th>
                     <th colspan="2">Ações</th>
@@ -34,6 +35,7 @@
                     <td><%=calendar.categoria.nome%></td>
                     <td><%=calendar.circuito.nome%></td>
                     <td><span class="flag-icon flag-icon-<%=calendar.circuito.pais%>"></span></td>
+                    <td><a href="<%=calendar.circuito.link_localizacao%>" target="_blank" class="btn btn-success btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-google-maps"></i></a></td>
                     <td><%=calendar.dtinicio%></td>
                     <td><%=calendar.dtfim%></td>
                     <td width="1px">
