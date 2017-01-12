@@ -79,7 +79,8 @@ module.exports.connections = {
      host: 'localhost',
      user: 'postgres', // optional
      password: 'postgres', // optional
-     database: 'gp-calendar' //optional
+     database: 'gp-calendar',
+     ssl      : true //optional
    }
 
 
