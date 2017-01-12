@@ -17,7 +17,7 @@
             <div class="fg-line">
                 <div class="col-sm-3 m-b-15">
                     <p class="f-500 c-black m-b-15">Categoria</p>
-                    <select class="chosen" style="display: none;">
+                    <select class="chosen" style="display: none;" name="categoria">
                       <% _.each(categorias, function(categoria){ %>
                         <option value="<%=categoria.id %>"><%=categoria.nome %></option>
                       <%})%>
@@ -30,7 +30,7 @@
             <div class="fg-line">
                 <div class="col-sm-3 m-b-15">
                     <p class="f-500 c-black m-b-15">Circuito</p>
-                    <select class="chosen" style="display: none;">
+                    <select class="chosen" style="display: none;" name="circuito">
                       <% _.each(circuitos, function(circuito){ %>
                         <option value="<%=circuito.id %>"><%=circuito.nome %></option>
                       <%})%>
@@ -55,11 +55,17 @@
 
         <div class="form-group fg-float">
             <div class="fg-line">
-                <input type="text" class="form-control fg-input" name="descricao">
-                <label class="fg-label">Descrição</label>
+                <div class="col-sm-4">
+                    <p class="c-black f-500 m-b-20">Data de Fim</p>
+                    <div class="input-group form-group">
+                        <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
+                            <div class="dtp-container fg-line">
+                            <input type="text" class="form-control date-picker" placeholder="Selecione uma data..." name="dtfim">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
 
         <div class="form-group">
           <div class="col-md-10 col-md-offset-2">
