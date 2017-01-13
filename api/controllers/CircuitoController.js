@@ -7,7 +7,14 @@
 
 module.exports = {
 	new:function(req, res){
-		return res.view();
+		Country.find().sort('id').exec(function paisFounded(err, paises){
+			if(err){
+				req.session.flash={ err: err}
+				console.log(JSON.stringify(err));
+				return res.redirect('/circuito');
+			}
+			return res.view({ paises: paises });
+		});
 	},
 	create:function(req, res){
 		// Cria o obj
