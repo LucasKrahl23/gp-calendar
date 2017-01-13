@@ -16,7 +16,6 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>#</th>
                     <th>Nome</th>
                     <th>Pais</th>
                     <th>Localização</th>
@@ -26,7 +25,6 @@
             <tbody>
               <% _.each(circuitos, function(circuito){ %>
                 <tr>
-                    <td><%=circuito.id%></td>
                     <td><%=circuito.nome%></td>
                     <td><span class="flag-icon flag-icon-<%=circuito.pais%>"></span></td>
                     <td><a href="<%=circuito.link_localizacao%>" target="_blank" class="btn btn-success btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-google-maps"></i></a></td>

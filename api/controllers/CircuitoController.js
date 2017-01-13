@@ -7,7 +7,7 @@
 
 module.exports = {
 	new:function(req, res){
-		Country.find().sort('id').exec(function paisFounded(err, paises){
+		Country.find().sort('langen').exec(function paisFounded(err, paises){
 			if(err){
 				req.session.flash={ err: err}
 				console.log(JSON.stringify(err));
@@ -60,7 +60,7 @@ module.exports = {
 				flashCreate.createSessionFlash(req, 'Ops, ocorreu algum problema ao editar a circuito, favor verificar!','erro');
 				return res.redirect('/circuito');
 			}
-			Country.find().sort('id').exec(function paisFounded(err, paises){
+			Country.find().sort('langen').exec(function paisFounded(err, paises){
 				if(err){
 					req.session.flash={ err: err}
 					console.log(JSON.stringify(err));
@@ -105,7 +105,7 @@ module.exports = {
 		});
 	},
 	index: function(req, res, next){
-		Circuito.find().sort('id').exec(function circuitoFounded(err, circuitos){
+		Circuito.find().sort('nome').exec(function circuitoFounded(err, circuitos){
 			if(err){
 				req.session.flash={ err: err}
 				console.log(JSON.stringify(err));
