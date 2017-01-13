@@ -60,8 +60,14 @@ module.exports = {
 				flashCreate.createSessionFlash(req, 'Ops, ocorreu algum problema ao editar a circuito, favor verificar!','erro');
 				return res.redirect('/circuito');
 			}
-
-			return res.view({ circuito: circuito });
+			Country.find().sort('id').exec(function paisFounded(err, paises){
+				if(err){
+					req.session.flash={ err: err}
+					console.log(JSON.stringify(err));
+					return res.redirect('/circuito');
+				}
+				return res.view({ circuito: circuito, paises: paises });
+			});
 		});
 	},
 	update:function(req, res, next){

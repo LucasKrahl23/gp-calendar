@@ -15,8 +15,18 @@
 
         <div class="form-group fg-float">
             <div class="fg-line">
-                <input type="text" class="form-control fg-input" name="pais" value="<%= circuito.pais %>">
-                <label class="fg-label">Pais</label>
+                <div class="col-sm-3 m-b-15">
+                    <p class="f-500 c-black m-b-15">País</p>
+                    <select class="chosen" style="display: none;" name="pais">
+                      <% _.each(paises, function(pais){ %>
+                        <% if (circuito.pais == pais.alpha2.toLowerCase() ) {%>
+                          <option value="<%=pais.alpha2.toLowerCase() %>" selected ><%=pais.langen %></option>
+                        <% }else{ %>
+                          <option value="<%=pais.alpha2.toLowerCase() %>"><%=pais.langen %></option>
+                        <% } %>
+                      <%})%>
+                    </select>
+                </div>
             </div>
         </div>
 
