@@ -7,14 +7,14 @@
 
 module.exports = {
 	new:function(req, res){
-		Categoria.find().sort('id').exec(function categoriaFounded(errCategoria, categorias){
+		Categoria.find().sort('nome').exec(function categoriaFounded(errCategoria, categorias){
 			if(errCategoria){
 				req.session.flash={ err: errCategoria}
 				console.log(JSON.stringify(errCategoria));
 				return next(errCategoria);
 			}
 
-			Circuito.find().sort('id').exec(function circuitoFounded(err, circuitos){
+			Circuito.find().sort('nome').exec(function circuitoFounded(err, circuitos){
 				if(err){
 					req.session.flash={ err: err}
 					console.log(JSON.stringify(err));
@@ -71,7 +71,22 @@ module.exports = {
 				return res.redirect('/calendar');
 			}
 
-			return res.view({ calendar: calendar });
+			Categoria.find().sort('nome').exec(function categoriaFounded(errCategoria, categorias){
+				if(errCategoria){
+					req.session.flash={ err: errCategoria}
+					console.log(JSON.stringify(errCategoria));
+					return next(errCategoria);
+				}
+
+				Circuito.find().sort('nome').exec(function circuitoFounded(err, circuitos){
+					if(err){
+						req.session.flash={ err: err}
+						console.log(JSON.stringify(err));
+						return next(err);
+					}
+					return res.view({ calendar: calendar, categorias: categorias, circuitos: circuitos });
+				});
+			});
 		});
 	},
 	update:function(req, res, next){
@@ -102,7 +117,7 @@ module.exports = {
 		});
 	},
 	index: function(req, res, next){
-		Calendar.find().sort('id').populateAll().exec(function calendarFounded(err, calendars){
+		Calendar.find().sort('dtinicio').populateAll().exec(function calendarFounded(err, calendars){
 			if(err){
 				req.session.flash={ err: err}
 				console.log(JSON.stringify(err));

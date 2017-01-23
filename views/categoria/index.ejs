@@ -16,7 +16,6 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>#</th>
                     <th>Nome</th>
                     <th colspan="2">Ações</th>
                 </tr>
@@ -24,7 +23,6 @@
             <tbody>
               <% _.each(categorias, function(categoria){ %>
                 <tr>
-                    <td><%=categoria.id%></td>
                     <td><%=categoria.nome%></td>
                     <td width="1px">
                       <a href="/categoria/edit/<%=categoria.id%>" class="btn palette-Light-Blue btn-icon bg waves-effect waves-circle waves-float">

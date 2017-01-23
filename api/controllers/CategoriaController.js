@@ -86,7 +86,7 @@ module.exports = {
 		});
 	},
 	index: function(req, res, next){
-		Categoria.find().sort('id').exec(function categoriaFounded(err, categorias){
+		Categoria.find().sort('nome').exec(function categoriaFounded(err, categorias){
 			if(err){
 				req.session.flash={ err: err}
 				console.log(JSON.stringify(err));

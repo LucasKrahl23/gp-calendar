@@ -16,7 +16,6 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>#</th>
                     <th>Descrição</th>
                     <th>Categoria</th>
                     <th>Circuito</th>
@@ -30,7 +29,6 @@
             <tbody>
               <% _.each(calendars, function(calendar){ %>
                 <tr>
-                    <td><%=calendar.id%></td>
                     <td><%=calendar.descricao%></td>
                     <td><%=calendar.categoria.nome%></td>
                     <td><%=calendar.circuito.nome%></td>

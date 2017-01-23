@@ -15,14 +15,12 @@
 
         <div class="form-group fg-float">
             <div class="fg-line">
-                <div class="col-sm-3 m-b-15">
-                    <p class="f-500 c-black m-b-15">País</p>
-                    <select class="chosen" style="display: none;" name="pais">
-                      <% _.each(paises, function(pais){ %>
-                        <option value="<%=pais.alpha2.toLowerCase() %>"><%=pais.langen %></option>
-                      <%})%>
-                    </select>
-                </div>
+                <p class="f-500 c-black m-b-15">País</p>
+                <select class="chosen" style="display: none;" name="pais">
+                  <% _.each(paises, function(pais){ %>
+                    <option value="<%=pais.alpha2.toLowerCase() %>"><%=pais.langen %></option>
+                  <%})%>
+                </select>
             </div>
         </div>
         
