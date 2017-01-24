@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <h2>Cadastro de calendar</h2>
+        <h2>Cadastro de evento</h2>
     </div>
 
     <div class="card-body card-padding">
@@ -15,7 +15,7 @@
 
         <div class="form-group fg-float">
             <div class="fg-line">
-                <div class="col-sm-3 m-b-15">
+                <div>
                     <p class="f-500 c-black m-b-15">Categoria</p>
                     <select class="chosen" style="display: none;" name="categoria">
                       <% _.each(categorias, function(categoria){ %>
@@ -25,10 +25,10 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="form-group fg-float">
             <div class="fg-line">
-                <div class="col-sm-3 m-b-15">
+                <div>
                     <p class="f-500 c-black m-b-15">Circuito</p>
                     <select class="chosen" style="display: none;" name="circuito">
                       <% _.each(circuitos, function(circuito){ %>
@@ -41,12 +41,12 @@
 
         <div class="form-group fg-float">
             <div class="fg-line">
-                <div class="col-sm-4">
+                <div>
                     <p class="c-black f-500 m-b-20">Data de Inicio</p>
                     <div class="input-group form-group">
                         <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
                             <div class="dtp-container fg-line">
-                            <input type="text" class="form-control date-picker" placeholder="Selecione uma data..." name="dtinicio">
+                            <input type="text" class="form-control input-mask" data-mask="00/00/0000" maxlength="10" autocomplete="off" name="dtinicio">
                         </div>
                     </div>
                 </div>
@@ -55,12 +55,12 @@
 
         <div class="form-group fg-float">
             <div class="fg-line">
-                <div class="col-sm-4">
+                <div>
                     <p class="c-black f-500 m-b-20">Data de Fim</p>
                     <div class="input-group form-group">
                         <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
                             <div class="dtp-container fg-line">
-                            <input type="text" class="form-control date-picker" placeholder="Selecione uma data..." name="dtfim">
+                            <input type="text" class="form-control input-mask" data-mask="00/00/0000" maxlength="10" autocomplete="off" name="dtfim">
                         </div>
                     </div>
                 </div>
