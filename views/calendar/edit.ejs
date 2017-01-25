@@ -55,7 +55,7 @@
                     <div class="input-group form-group">
                         <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
                             <div class="dtp-container fg-line">
-                            <input type="text" class="form-control input-mask" data-mask="00/00/0000" maxlength="10" autocomplete="off" name="dtinicio" value="<%= calendar.dtinicio %>">
+                            <input type="text" class="form-control input-mask" data-mask="00/00/0000" maxlength="10" autocomplete="off" name="dtinicio" value="<%= moment.utc(calendar.dtinicio).format('DD/MM/YYYY') %>">
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                     <div class="input-group form-group">
                         <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
                             <div class="dtp-container fg-line">
-                            <input type="text" class="form-control input-mask" data-mask="00/00/0000" maxlength="10" autocomplete="off" name="dtfim" value="<%= calendar.dtfim %>">
+                            <input type="text" class="form-control input-mask" data-mask="00/00/0000" maxlength="10" autocomplete="off" name="dtfim" value="<%= moment.utc(calendar.dtfim).format('DD/MM/YYYY') %>">
                         </div>
                     </div>
                 </div>

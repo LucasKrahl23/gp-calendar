@@ -13,11 +13,11 @@ module.exports = {
   		required: true
   	},
   	dtinicio: {
-  		type: 'string',
+  		type: 'date',
   		required: true
   	},
   	dtfim: {
-  		type: 'string',
+  		type: 'date',
   		required: true
   	},
   	categoria: {

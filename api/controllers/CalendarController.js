@@ -4,6 +4,7 @@
  * @description :: Server-side logic for managing calendars
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+var moment = require("moment")
 
 module.exports = {
 	new:function(req, res){
@@ -28,8 +29,8 @@ module.exports = {
 		// Cria o obj
 		var calendarObj={
 			descricao: req.param('descricao'),
-			dtinicio: req.param('dtinicio'),
-			dtfim: req.param('dtfim'),
+			dtinicio: moment(req.param('dtinicio'), 'DD/MM/YYYY').toDate(),
+			dtfim: moment(req.param('dtfim'), 'DD/MM/YYYY').toDate(),
 			categoria: req.param('categoria'),
 			circuito: req.param('circuito')
 		};
@@ -84,7 +85,7 @@ module.exports = {
 						console.log(JSON.stringify(err));
 						return next(err);
 					}
-					return res.view({ calendar: calendar, categorias: categorias, circuitos: circuitos });
+					return res.view({ calendar: calendar, categorias: categorias, circuitos: circuitos, moment: moment });
 				});
 			});
 		});
@@ -96,12 +97,12 @@ module.exports = {
 			flashCreate.createSessionFlash(req, 'Ops, informação id necessárias','warning');
 			return res.redirect('/calendar');
 		}
-
+		
 		// Cria o obj
 		var calendarObj={
 			descricao: req.param('descricao'),
-			dtinicio: req.param('dtinicio'),
-			dtfim: req.param('dtfim'),
+			dtinicio: moment(req.param('dtinicio'), 'DD/MM/YYYY').toDate(),
+			dtfim: moment(req.param('dtfim'), 'DD/MM/YYYY').toDate(),
 			categoria: req.param('categoria'),
 			circuito: req.param('circuito')
 		};
@@ -124,7 +125,7 @@ module.exports = {
 				return next(err);
 			}
 			return res.view({
-				calendars: calendars
+				calendars: calendars, moment: moment
 			});
 		});
 	},

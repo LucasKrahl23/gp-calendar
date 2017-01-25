@@ -34,8 +34,8 @@
                     <td><%=calendar.circuito.nome%></td>
                     <td><span class="flag-icon flag-icon-<%=calendar.circuito.pais%>"></span></td>
                     <td><a href="<%=calendar.circuito.link_localizacao%>" target="_blank" class="btn btn-success btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-google-maps"></i></a></td>
-                    <td><%=calendar.dtinicio%></td>
-                    <td><%=calendar.dtfim%></td>
+                    <td><%=moment.utc(calendar.dtinicio).format('DD/MM/YYYY')%></td>
+                    <td><%=moment.utc(calendar.dtfim).format('DD/MM/YYYY')%></td>
                     <td width="1px">
                       <a href="/calendar/edit/<%=calendar.id%>" class="btn palette-Light-Blue btn-icon bg waves-effect waves-circle waves-float">
                         <i class="zmdi zmdi-edit"></i>
