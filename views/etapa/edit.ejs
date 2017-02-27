@@ -1,0 +1,71 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Cadastro de Etapas</h2>
+    </div>
+
+    <div class="card-body card-padding">
+      <form method="post" action="/etapa/update">
+        
+        <input type="text" hidden name="id" value="<%= etapa.id %>">
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <input type="text" class="form-control fg-input" name="descricao" value="<%= etapa.descricao %>">
+                <label class="fg-label">Descrição</label>
+            </div>
+        </div>
+
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <div>
+                    <p class="f-500 c-black m-b-15">Circuito</p>
+                    <select class="chosen" style="display: none;" name="circuito">
+                      <% _.each(circuitos, function(circuito){ %>
+                        <% if (circuito.id == etapa.circuito ) {%>
+                          <option value="<%=circuito.id %>" selected><%=circuito.nome %></option>
+                        <% }else{%>
+                          <option value="<%=circuito.id %>"><%=circuito.nome %></option>
+                        <% }%>
+                      <%})%>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <div>
+                    <p class="c-black f-500 m-b-20">Data de Inicio</p>
+                    <div class="input-group form-group">
+                        <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
+                            <div class="dtp-container fg-line">
+                            <input type="text" class="form-control input-mask" data-mask="00/00/0000" maxlength="10" autocomplete="off" name="dtinicio" value="<%= moment.utc(etapa.dtinicio).format('DD/MM/YYYY') %>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <div>
+                    <p class="c-black f-500 m-b-20">Data de Fim</p>
+                    <div class="input-group form-group">
+                        <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
+                            <div class="dtp-container fg-line">
+                            <input type="text" class="form-control input-mask" data-mask="00/00/0000" maxlength="10" autocomplete="off" name="dtfim" value="<%= moment.utc(etapa.dtfim).format('DD/MM/YYYY') %>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-10 col-md-offset-2">
+          <a class="btn btn-default btn-lg waves-effect" href="/etapa">Cancelar</a>
+          <button class="btn palette-Teal btn-lg bg waves-effect" type="submit">Salvar</button>
+          </div>
+        </div>
+      </form>
+      <br>
+    </div>
+</div>

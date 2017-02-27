@@ -1,0 +1,73 @@
+<div class="card">
+    <div class="card-header">
+      <table>
+        <tr>
+          <td>
+            <h2>Cadastro de Etapas</h2>    
+          </td>
+          <td style="text-align: right;">
+            <a href="/etapa/new" class="btn palette-Light-Green bg btn-float waves-effect waves-circle"><i class="zmdi zmdi-plus"></i></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Circuito</th>
+                    <th>Pais</th>
+                    <th>Localização</th>
+                    <th>Inicio</th>
+                    <th>Fim</th>
+                    <th colspan="2">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% _.each(etapas, function(etapa){ %>
+                <tr>
+                    <td><%=etapa.descricao%></td>
+                    <td><%=etapa.circuito.nome%></td>
+                    <td><span class="flag-icon flag-icon-<%=etapa.circuito.pais%>"></span></td>
+                    <td><a href="<%=etapa.circuito.link_localizacao%>" target="_blank" class="btn btn-success btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-google-maps"></i></a></td>
+                    <td><%=moment.utc(etapa.dtinicio).format('DD/MM/YYYY')%></td>
+                    <td><%=moment.utc(etapa.dtfim).format('DD/MM/YYYY')%></td>
+                    <td width="1px">
+                      <a href="/etapa/edit/<%=etapa.id%>" class="btn palette-Light-Blue btn-icon bg waves-effect waves-circle waves-float">
+                        <i class="zmdi zmdi-edit"></i>
+                      </a>
+                    </td>
+                    <td width="1px">
+                      <button class="btn palette-Deep-Orange btn-icon bg waves-effect waves-circle waves-float" id="sa-<%=etapa.id%>">
+                        <i class="zmdi zmdi-delete"></i>
+                      </button>
+
+                      <script type="text/javascript">
+                      $(document).ready(function() {
+                        //Warning Message
+                          $('#sa-<%=etapa.id%>').click(function(){
+                              swal({
+                                  title: "Atenção!",
+                                  text: "Deseja realmente excluir o registro?",
+                                  type: "warning",
+                                  showCancelButton: true,
+                                  confirmButtonColor: "#DD6B55",
+                                  confirmButtonText: "Sim, excluir!",
+                                  closeOnConfirm: false
+                              }, function(isConfirm){
+                                  if (isConfirm) {
+                                    window.location.replace("/etapa/destroy/<%=etapa.id%>");
+                                  }
+                              });
+                          });
+                        });
+                      </script>
+                    </td>
+                </tr>
+              <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>
