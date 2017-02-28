@@ -43,7 +43,7 @@
                     <p class="f-500 c-black m-b-15">Circuito</p>
                     <select class="chosen" style="display: none;" name="circuito">
                       <% _.each(circuitos, function(circuito){ %>
-                        <% if (circuito.id == etapa.circuito ) {%>
+                        <% if (circuito.id == etapa.circuito.id ) {%>
                           <option value="<%=circuito.id %>" selected><%=circuito.nome %></option>
                         <% }else{%>
                           <option value="<%=circuito.id %>"><%=circuito.nome %></option>

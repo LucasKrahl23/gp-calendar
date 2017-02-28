@@ -17,6 +17,7 @@
             <thead>
                 <tr>
                     <th>Descrição</th>
+                    <th>Categorias</th>
                     <th>Circuito</th>
                     <th>Pais</th>
                     <th>Localização</th>
@@ -29,6 +30,14 @@
               <% _.each(etapas, function(etapa){ %>
                 <tr>
                     <td><%=etapa.descricao%></td>
+                    <td>
+                    <select class="chosen" disabled multiple style="display: none;" name="categorias">
+                      <% _.each(etapa.categorias, function(t_categoria){  %>
+                        <option value="<%=t_categoria.id %>" selected><%=t_categoria.nome %></option>
+                      <%})%>
+                    </select>
+
+                    </td>
                     <td><%=etapa.circuito.nome%></td>
                     <td><span class="flag-icon flag-icon-<%=etapa.circuito.pais%>"></span></td>
                     <td><a href="<%=etapa.circuito.link_localizacao%>" target="_blank" class="btn btn-success btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-google-maps"></i></a></td>
