@@ -1,5 +1,5 @@
 /**
- * Etapa.js
+ * Temporada.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -8,25 +8,18 @@
 module.exports = {
 
   attributes: {
-  	descricao: {
+  	nome: {
   		type: 'string',
   		required: true
   	},
-  	dtinicio: {
-  		type: 'date',
-  		required: true
+  	categoria: {
+  		model: 'categoria'
   	},
-  	dtfim: {
-  		type: 'date',
-  		required: true
-  	},
-  	circuito: {
-  		model: 'circuito'
-  	},
-    temporadas: {
-      collection: 'temporada',
-      via: 'etapas'
-    }
+  	etapas: {
+  		collection: 'etapa',
+  		via: 'temporadas',
+      dominant: true
+  	}
   }
 };
 

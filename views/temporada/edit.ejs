@@ -1,0 +1,66 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Cadastro de Temporadas</h2>
+    </div>
+
+    <div class="card-body card-padding">
+      <form method="post" action="/temporada/update">
+        
+        <input type="text" hidden name="id" value="<%= temporada.id %>">
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <input type="text" class="form-control fg-input" name="nome" value="<%= temporada.nome %>">
+                <label class="fg-label">Descrição</label>
+            </div>
+        </div>
+
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <div>
+                    <p class="f-500 c-black m-b-15">Categoria</p>
+                    <select class="chosen" style="display: none;" name="categoria">
+                      <% _.each(categorias, function(categoria){ %>
+                        <% if (categoria.id == temporada.categoria.id ) {%>
+                          <option value="<%=categoria.id %>" selected><%=categoria.nome %></option>
+                        <% }else{%>
+                          <option value="<%=categoria.id %>"><%=categoria.nome %></option>
+                        <% }%>
+                      <%})%>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <div>
+                    <p class="f-500 c-black m-b-15">Etapas</p>
+                    <select class="chosen" multiple style="display: none;" name="etapas">
+                      <% _.each(etapas, function(etapa){ %>
+                        <% var entrou = false %>
+                        <% _.each(temporada.etapas, function(t_etapa){  %>
+                            <% if ( t_etapa.id == etapa.id ) {%>
+                            <% entrou = true %>
+                              <option value="<%=etapa.id %>" selected><%=etapa.descricao %></option>
+                            <% } %>
+                        <%})%>
+
+                        <% if(!entrou){ %>
+                            <option value="<%=etapa.id %>"><%=etapa.descricao %></option>
+                        <% } %>
+                      <%})%>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-10 col-md-offset-2">
+          <a class="btn btn-default btn-lg waves-effect" href="/temporada">Cancelar</a>
+          <button class="btn palette-Teal btn-lg bg waves-effect" type="submit">Salvar</button>
+          </div>
+        </div>
+      </form>
+      <br>
+    </div>
+</div>
