@@ -15,7 +15,14 @@ module.exports = {
 				console.log(JSON.stringify(err));
 				return next(err);
 			}
-			return res.view({ circuitos: circuitos });
+			Categoria.find().sort('nome').exec(function categoriaFounded(err, categorias){
+				if(err){
+					req.session.flash={ err: err}
+					console.log(JSON.stringify(err));
+					return next(err);
+				}
+				return res.view({ circuitos: circuitos, categorias: categorias });
+			});
 		});
 	},
 	create:function(req, res){
@@ -24,7 +31,8 @@ module.exports = {
 			descricao: req.param('descricao'),
 			dtinicio: moment(req.param('dtinicio'), 'DD/MM/YYYY').toDate(),
 			dtfim: moment(req.param('dtfim'), 'DD/MM/YYYY').toDate(),
-			circuito: req.param('circuito')
+			circuito: req.param('circuito'),
+			categorias: req.param('categorias')
 		};
 
 		Etapa.create(etapaObj, function(err, etapa){
@@ -53,7 +61,7 @@ module.exports = {
 			return res.redirect('/etapa');
 		}
 
-		Etapa.findOne(id,function etapaFounded(err, etapa){
+		Etapa.findOne(id).populateAll().exec(function etapaFounded(err, etapa){
 			if(err){
 				req.session.flash={ err: err}
 				console.log(JSON.stringify(err));
@@ -70,7 +78,14 @@ module.exports = {
 					console.log(JSON.stringify(err));
 					return next(err);
 				}
-				return res.view({ etapa: etapa, circuitos: circuitos, moment: moment });
+				Categoria.find().sort('nome').exec(function categoriaFounded(err, categorias){
+					if(err){
+						req.session.flash={ err: err}
+						console.log(JSON.stringify(err));
+						return next(err);
+					}
+					return res.view({ etapa: etapa, circuitos: circuitos, moment: moment, categorias: categorias });
+				});
 			});
 		});
 	},
@@ -87,7 +102,8 @@ module.exports = {
 			descricao: req.param('descricao'),
 			dtinicio: moment(req.param('dtinicio'), 'DD/MM/YYYY').toDate(),
 			dtfim: moment(req.param('dtfim'), 'DD/MM/YYYY').toDate(),
-			circuito: req.param('circuito')
+			circuito: req.param('circuito'),
+			categorias: req.param('categorias')
 		};
 
 		Etapa.update(id,etapaObj, function etapaUpdated(err, etapa){

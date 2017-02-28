@@ -11,6 +11,10 @@ module.exports = {
   	nome: {
   		type: 'string',
   		required: true
+  	},
+  	etapas: {
+  		collection: 'etapa',
+  		via: 'categorias'
   	}
   }
 };

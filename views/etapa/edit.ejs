@@ -13,6 +13,29 @@
                 <label class="fg-label">Descrição</label>
             </div>
         </div>
+        
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <div>
+                    <p class="f-500 c-black m-b-15">Categorias</p>
+                    <select class="chosen" multiple style="display: none;" name="categorias">
+                      <% _.each(categorias, function(categoria){ %>
+                        <% var entrou = false %>
+                        <% _.each(etapa.categorias, function(t_categoria){  %>
+                            <% if ( t_categoria.id == categoria.id ) {%>
+                            <% entrou = true %>
+                              <option value="<%=categoria.id %>" selected><%=categoria.nome %></option>
+                            <% } %>
+                        <%})%>
+
+                        <% if(!entrou){ %>
+                            <option value="<%=categoria.id %>"><%=categoria.nome %></option>
+                        <% } %>
+                        <%})%>
+                    </select>
+                </div>
+            </div>
+        </div>
 
         <div class="form-group fg-float">
             <div class="fg-line">

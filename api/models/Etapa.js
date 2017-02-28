@@ -26,6 +26,11 @@ module.exports = {
     temporadas: {
       collection: 'temporada',
       via: 'etapas'
+    },
+    categorias: {
+      collection: 'categoria',
+      via: 'etapas',
+      dominant: true
     }
   }
 };

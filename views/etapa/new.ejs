@@ -16,6 +16,19 @@
         <div class="form-group fg-float">
             <div class="fg-line">
                 <div>
+                    <p class="f-500 c-black m-b-15">Categorias</p>
+                    <select class="chosen" multiple style="display: none;" name="categorias">
+                      <% _.each(categorias, function(categoria){ %>
+                        <option value="<%=categoria.id %>"><%=categoria.nome %></option>
+                      <%})%>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <div>
                     <p class="f-500 c-black m-b-15">Circuito</p>
                     <select class="chosen" style="display: none;" name="circuito">
                       <% _.each(circuitos, function(circuito){ %>
