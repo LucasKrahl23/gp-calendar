@@ -1,0 +1,67 @@
+<div class="card">
+    <div class="card-header">
+      <table>
+        <tr>
+          <td>
+            <h2>Cadastro de Pilotos</h2>    
+          </td>
+          <td style="text-align: right;">
+            <a href="/piloto/new" class="btn palette-Light-Green bg btn-float waves-effect waves-circle"><i class="zmdi zmdi-plus"></i></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Pais</th>
+                    <th>Data Nascimento</th>
+                    <th colspan="2">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% _.each(pilotos, function(piloto){ %>
+                <tr>
+                    <td><%=piloto.nome%></td>
+                    <td><span class="flag-icon flag-icon-<%=piloto.pais%>"></span></td>
+                    <td><%=moment.utc(piloto.dtnascimento).format('DD/MM/YYYY')%></td>
+                    <td width="1px">
+                      <a href="/piloto/edit/<%=piloto.id%>" class="btn palette-Light-Blue btn-icon bg waves-effect waves-circle waves-float">
+                        <i class="zmdi zmdi-edit"></i>
+                      </a>
+                    </td>
+                    <td width="1px">
+                      <button class="btn palette-Deep-Orange btn-icon bg waves-effect waves-circle waves-float" id="sa-<%=piloto.id%>">
+                        <i class="zmdi zmdi-delete"></i>
+                      </button>
+
+                      <script type="text/javascript">
+                      $(document).ready(function() {
+                        //Warning Message
+                          $('#sa-<%=piloto.id%>').click(function(){
+                              swal({
+                                  title: "Atenção!",
+                                  text: "Deseja realmente excluir o registro?",
+                                  type: "warning",
+                                  showCancelButton: true,
+                                  confirmButtonColor: "#DD6B55",
+                                  confirmButtonText: "Sim, excluir!",
+                                  closeOnConfirm: false
+                              }, function(isConfirm){
+                                  if (isConfirm) {
+                                    window.location.replace("/piloto/destroy/<%=piloto.id%>");
+                                  }
+                              });
+                          });
+                        });
+                      </script>
+                    </td>
+                </tr>
+              <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>
