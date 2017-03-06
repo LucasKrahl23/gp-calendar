@@ -1,0 +1,71 @@
+<div class="card">
+    <div class="card-header">
+      <table>
+        <tr>
+          <td>
+            <h2>Cadastro de Programação</h2>    
+          </td>
+          <td style="text-align: right;">
+            <a href="/programacao/new" class="btn palette-Light-Green bg btn-float waves-effect waves-circle"><i class="zmdi zmdi-plus"></i></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Etapa</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>TV</th>
+                    <th colspan="2">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% _.each(programacaos, function(programacao){ %>
+                <tr>
+                    <td><%=programacao.nome%></td>
+                    <td><%=programacao.etapa.descricao%></td>
+                    <td><%=moment.utc(programacao.data).format('DD/MM/YYYY')%></td>
+                    <td><%=programacao.hora%></td>
+                    <td><img src="<%=programacao.tv.logo%>" width="200px" height="50px" ></td>
+                    <td width="1px">
+                      <a href="/programacao/edit/<%=programacao.id%>" class="btn palette-Light-Blue btn-icon bg waves-effect waves-circle waves-float">
+                        <i class="zmdi zmdi-edit"></i>
+                      </a>
+                    </td>
+                    <td width="1px">
+                      <button class="btn palette-Deep-Orange btn-icon bg waves-effect waves-circle waves-float" id="sa-<%=programacao.id%>">
+                        <i class="zmdi zmdi-delete"></i>
+                      </button>
+
+                      <script type="text/javascript">
+                      $(document).ready(function() {
+                        //Warning Message
+                          $('#sa-<%=programacao.id%>').click(function(){
+                              swal({
+                                  title: "Atenção!",
+                                  text: "Deseja realmente excluir o registro?",
+                                  type: "warning",
+                                  showCancelButton: true,
+                                  confirmButtonColor: "#DD6B55",
+                                  confirmButtonText: "Sim, excluir!",
+                                  closeOnConfirm: false
+                              }, function(isConfirm){
+                                  if (isConfirm) {
+                                    window.location.replace("/programacao/destroy/<%=programacao.id%>");
+                                  }
+                              });
+                          });
+                        });
+                      </script>
+                    </td>
+                </tr>
+              <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>
